@@ -39,15 +39,21 @@ fit_bottom = np.polyfit((left_bottom[0], right_bottom[0]),
 color_thresholds = ((image[:, :, 0] < rgb_threshold[0]) |
                     (image[:, :, 1] < rgb_threshold[1]) |
                     (image[:, :, 2] < rgb_threshold[2]))
+plt.imshow(color_thresholds, cmap='gray')
+plt.show()
 
 # Find the region inside the lines
 XX, YY = np.meshgrid(np.arange(0, xsize), np.arange(0, ysize))
 region_thresholds = ((YY > (XX * fit_left[0] + fit_left[1])) &
                      (YY > (XX * fit_right[0] + fit_right[1])) &
                      (YY < (XX * fit_bottom[0] + fit_bottom[1])))
+plt.imshow(region_thresholds, cmap='gray')
+plt.show()
 
 # Mask color and region selection
 color_select[color_thresholds | ~region_thresholds] = [0, 0, 0]
+plt.imshow(color_select)
+plt.show()
 # Color pixels red where both color and region selections met
 line_image[~color_thresholds & region_thresholds] = [255, 0, 0]
 
@@ -60,4 +66,4 @@ plt.plot(x, y, 'b--', lw=4)
 plt.imshow(color_select)
 plt.show()
 plt.imshow(line_image)
-# plt.show()
+plt.show()
