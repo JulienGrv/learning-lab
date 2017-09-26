@@ -21,16 +21,16 @@ def df(x):
     """
     Derivative of `f` with respect to `x`.
     """
-    return 2*x
+    return 2 * x
 
 
 # Random number between 0 and 10,000. Feel free to set x whatever you like.
 x = random.randint(0, 10000)
 # TODO: Set the learning rate
-learning_rate = ?
+learning_rate = 0.1
 epochs = 100
 
-for i in range(epochs+1):
+for i in range(epochs + 1):
     cost = f(x)
     gradx = df(x)
     print("EPOCH {}: Cost = {:.3f}, x = {:.3f}".format(i, cost, gradx))

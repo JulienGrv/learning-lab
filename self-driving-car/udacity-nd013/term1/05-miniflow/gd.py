@@ -5,4 +5,4 @@ def gradient_descent_update(x, gradx, learning_rate):
     # TODO: Implement gradient descent.
 
     # Return the new value for x
-    return x
+    return x - learning_rate * gradx
